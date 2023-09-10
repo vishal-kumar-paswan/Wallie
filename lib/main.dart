@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallie/screens/splashscreen.dart';
+import 'package:wallie/routes.dart';
 
 void main() => runApp(const Wallie());
 
@@ -8,8 +8,11 @@ class Wallie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      onGenerateRoute: Routes.onGenerateRoute,
+      initialRoute: "/splashscreen",
     );
   }
 }
