@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
 
   void routeToHomeScreen(BuildContext ctx) {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(ctx, "/homescreen");
+      Navigator.pushReplacementNamed(ctx, "/homescreen");
     });
   }
 
