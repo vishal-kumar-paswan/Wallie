@@ -5,25 +5,24 @@ class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   final String description = 'Wrap your screen in elegance.';
-  final String version = 'Version 0.0.1 Alpha';
+  final String version = 'Version 0.0.1 α';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+      body: Stack(
+        alignment: Alignment.center,
+        fit: StackFit.expand,
+        children: [
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Wallie(),
               Text(
                 version,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: FontWeight.w300,
                 ),
               ),
@@ -33,13 +32,32 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 22,
+                  fontSize: 21,
                   fontWeight: FontWeight.w300,
                 ),
               ),
             ],
           ),
-        ),
+          Positioned(
+            bottom: 25,
+            child: Column(
+              children: [
+                const Text(
+                  'Powered by',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Image.asset(
+                  'assets/images/unsplash_logo.png',
+                  width: 140,
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

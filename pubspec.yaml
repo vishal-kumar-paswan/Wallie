@@ -20,6 +20,7 @@ dependencies:
   connectivity_plus: ^4.0.2
   animated_text_kit: ^4.2.2
   transparent_image: ^2.0.1
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:
@@ -30,4 +31,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/animations/no_internet_animation.json
-    - .env
+    - assets/images/unsplash_logo.png
