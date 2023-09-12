@@ -1,11 +1,13 @@
-import 'dart:developer';
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:wallie/utils/display_snackbar.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class ImageScreen extends StatelessWidget {
   final _key = GlobalKey<ExpandableFabState>();
@@ -52,7 +54,7 @@ class ImageScreen extends StatelessWidget {
           FloatingActionButton(
             onPressed: () async {
               FileDownloader.downloadFile(
-                name: 'wallie_wallpaper.jpeg',
+                name: 'wallie_wallpaper.jpg',
                 url: imageUrl,
                 onDownloadCompleted: (String path) {
                   DisplaySnackbar(
@@ -76,14 +78,40 @@ class ImageScreen extends StatelessWidget {
             child: const Icon(CupertinoIcons.cloud_download),
           ),
           FloatingActionButton(
-            onPressed: () {
+            onPressed: () async {
+              var file = await DefaultCacheManager().getSingleFile(imageUrl);
+              bool result = await WallpaperManager.setWallpaperFromFile(
+                file.path,
+                WallpaperManager.LOCK_SCREEN,
+              );
+
+              DisplaySnackbar(
+                context: context,
+                message: result
+                    ? 'Wallpaper changed sucessfully'
+                    : 'Failed to change wallpaper',
+                color: result ? Colors.green : Colors.red,
+              );
+
               _closeFABMenu();
             },
             tooltip: 'Set on lock screen',
             child: const Icon(CupertinoIcons.lock_fill),
           ),
           FloatingActionButton(
-            onPressed: () {
+            onPressed: () async {
+              var file = await DefaultCacheManager().getSingleFile(imageUrl);
+              bool result = await WallpaperManager.setWallpaperFromFile(
+                file.path,
+                WallpaperManager.HOME_SCREEN,
+              );
+              DisplaySnackbar(
+                context: context,
+                message: result
+                    ? 'Wallpaper changed sucessfully'
+                    : 'Failed to change wallpaper',
+                color: result ? Colors.green : Colors.red,
+              );
               _closeFABMenu();
             },
             tooltip: 'Set on home screen',
