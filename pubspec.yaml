@@ -1,9 +1,8 @@
 name: wallie
-description: A new Flutter project.
-
+description: Wallie is a open-source wallpaper app powered by Unsplash API
 publish_to: "none"
 
-version: 1.0.0+1
+version: 0.0.1+1
 
 environment:
   sdk: ">=3.0.6 <4.0.0"
@@ -21,6 +20,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   transparent_image: ^2.0.1
   cached_network_image: ^3.2.3
+  lottie: ^2.6.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -30,5 +31,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/animations/no_internet_animation.json
+    - .env
+    - assets/animations/loading_animation.json
     - assets/images/unsplash_logo.png
