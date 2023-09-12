@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+// import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ImagesAPI {
   final Dio _dio = Dio();
@@ -10,7 +10,8 @@ class ImagesAPI {
     _dio.options.headers = {
       "Authorization": "Client-ID ${dotenv.env['CLIENT-ID']}"
     };
-    _dio.interceptors.add(PrettyDioLogger());
+    // For development / debugging
+    // _dio.interceptors.add(PrettyDioLogger());
   }
 
   Dio get sendRequest => _dio;
