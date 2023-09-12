@@ -199,7 +199,7 @@ packages:
     source: hosted
     version: "0.7.0"
   flutter_cache_manager:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_cache_manager
       sha256: "8207f27539deb83732fdda03e259349046a39a4c767269285f449ade355d54ba"
@@ -251,6 +251,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_wallpaper_manager:
+    dependency: "direct main"
+    description:
+      name: flutter_wallpaper_manager
+      sha256: "369f63c6fdb4515477ced545e39581fb3d56afcdde8bcb9ba8a58d42c2dd1c9c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -581,14 +589,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-  wallpaper:
-    dependency: "direct main"
-    description:
-      name: wallpaper
-      sha256: d99f0d2c635cb1ab319bc80b1f86c895497322f5ff40097cc82e3d9571c6e393
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.1"
   win32:
     dependency: transitive
     description:

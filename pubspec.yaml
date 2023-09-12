@@ -23,8 +23,9 @@ dependencies:
   lottie: ^2.6.0
   flutter_dotenv: ^5.1.0
   flutter_expandable_fab: ^2.0.0
-  wallpaper: ^1.1.1
   flutter_file_downloader: ^1.1.2
+  flutter_wallpaper_manager: ^0.0.4
+  flutter_cache_manager: ^3.3.1
 
 dev_dependencies:
   flutter_test:
