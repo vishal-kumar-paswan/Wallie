@@ -13,9 +13,7 @@ class HomeScreenDrawer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-            ),
+            decoration: BoxDecoration(),
             child: const Center(
               child: Wallie(),
             ),
@@ -54,10 +52,10 @@ class HomeScreenDrawer extends StatelessWidget {
   Widget drawerListItemText({required String message}) {
     return Text(
       message,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 21,
         fontWeight: FontWeight.w400,
-        color: Colors.black,
+        color: Colors.grey.shade800,
       ),
     );
   }
@@ -65,7 +63,6 @@ class HomeScreenDrawer extends StatelessWidget {
   Widget drawerListItemIcon({required IconData icon}) {
     return Icon(
       icon,
-      color: Colors.black,
       size: 25,
     );
   }
