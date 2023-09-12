@@ -30,7 +30,7 @@ class Routes {
           builder: (context) => const NoInternetScreen(),
         );
 
-      case "/image":
+      case "/imagescreen":
         //fetching arguments passed while navigating as map
         arguments = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
@@ -40,7 +40,7 @@ class Routes {
           ),
         );
 
-      case "/about":
+      case "/aboutscreen":
         return MaterialPageRoute(
           builder: (context) => const AboutScreen(),
         );
