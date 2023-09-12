@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ImagesAPI {
   final Dio _dio = Dio();
 
   ImagesAPI() {
-    _dio.options.baseUrl =
-        "https://970d-2405-201-800d-805f-cd9f-5d96-e26a-9585.ngrok-free.app";
+    _dio.options.baseUrl = "https://api.unsplash.com";
+    _dio.options.headers = {
+      "Authorization": "Client-ID ${dotenv.env['CLIENT-ID']}"
+    };
     _dio.interceptors.add(PrettyDioLogger());
   }
 

@@ -1,8 +1,9 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:wallie/cubits/images_cubit/images_cubit.dart';
 import 'package:wallie/cubits/images_cubit/images_state.dart';
@@ -34,18 +35,12 @@ class ImageListView extends StatelessWidget {
         builder: (context, state) {
           if (state is ImagesLoadingState) {
             return Center(
-              child: AnimatedTextKit(
-                isRepeatingAnimation: false,
-                totalRepeatCount: 1,
-                animatedTexts: [
-                  TyperAnimatedText(
-                    'Loading your gallery..',
-                    textStyle: GoogleFonts.lato(
-                      color: Colors.black,
-                      fontSize: 25.0,
-                    ),
-                  ),
-                ],
+              child: Transform.scale(
+                scale: 3.5,
+                child: Lottie.asset(
+                  'assets/animations/loading_animation.json',
+                  repeat: true,
+                ),
               ),
             );
           }
@@ -55,49 +50,59 @@ class ImageListView extends StatelessWidget {
               child: MasonryGridView.builder(
                 gridDelegate:
                     const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+                  crossAxisCount: 2,
+                ),
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 itemCount: state.images.length,
                 itemBuilder: (context, index) {
                   ImagesModel image = state.images[index];
-                  return imageCard(image, index, context);
+
+                  Map<String, dynamic>? imageUrls = image.urls;
+
+                  return imageCard(imageUrls!, index, context);
                 },
               ),
             );
           }
           return const Center(
-            child: Text("An error occured"),
+            child: Text(
+              "Oops, failed to connect to servers! :')",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
           );
         },
       ),
     );
   }
 
-  Widget imageCard(ImagesModel image, int index, BuildContext context) {
+  Widget imageCard(
+      Map<String, dynamic> imageUrls, int index, BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(13.0),
       child: InkWell(
         onTap: () {
           Map<String, dynamic> arguments = {
-            "imageUrl": image.regular.toString(),
+            "imageUrl": imageUrls['regular'].toString(),
             "index": index
           };
 
           Navigator.pushNamed(
             context,
-            "/image",
+            "/imagescreen",
             arguments: arguments, // Passing arguments as Map
           );
         },
         child: Hero(
           tag: 'image$index',
-          child: FadeInImage(
-            key: UniqueKey(),
-            placeholder: MemoryImage(kTransparentImage),
-            image: NetworkImage(image.regular.toString()),
-            fadeInCurve: Curves.easeInOut,
-            fit: BoxFit.cover,
+          child: CachedNetworkImage(
+            imageUrl: imageUrls['small'].toString(),
+            placeholder: (context, url) {
+              return Image.memory(kTransparentImage);
+            },
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
       ),

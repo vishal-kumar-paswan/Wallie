@@ -7,7 +7,7 @@ class ImagesRepository {
 
   Future<List<ImagesModel>> fetchImages() async {
     try {
-      Response response = await _api.sendRequest.get("/");
+      Response response = await _api.sendRequest.get("/photos?per_page=30");
       List<dynamic> postMaps = response.data;
       return postMaps.map((post) => ImagesModel.fromJson(post)).toList();
     } catch (ex) {

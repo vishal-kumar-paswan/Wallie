@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class ImageScreen extends StatelessWidget {
   const ImageScreen({
@@ -17,13 +17,22 @@ class ImageScreen extends StatelessWidget {
       body: Center(
         child: Hero(
           tag: 'image$index',
-          child: FadeInImage(
-            key: UniqueKey(),
+          child: CachedNetworkImage(
             height: double.infinity,
             width: double.infinity,
-            placeholder: MemoryImage(kTransparentImage),
-            image: NetworkImage(imageUrl),
             fit: BoxFit.cover,
+            imageUrl:
+                imageUrl,   placeholder: (context, url) {
+              return const Material(
+                child: Center(
+                  child: Text(
+                    'Loading...',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              );
+            },
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
       ),
