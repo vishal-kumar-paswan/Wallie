@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallie/utils/display_scaffold.dart';
+import 'package:wallie/utils/display_snackbar.dart';
 import 'package:wallie/widgets/wallie.dart';
 
 class HomeScreenDrawer extends StatelessWidget {
@@ -12,9 +12,9 @@ class HomeScreenDrawer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(),
-            child: const Center(
+            child: Center(
               child: Wallie(),
             ),
           ),
@@ -24,9 +24,10 @@ class HomeScreenDrawer extends StatelessWidget {
             title: drawerListItemText(message: 'Settings'),
             onTap: () {
               Navigator.pop(context);
-              DisplayScaffold(
+              DisplaySnackbar(
                 context: context,
                 message: 'This feature will be added soon :)',
+                color: Colors.green,
               );
             },
           ),
