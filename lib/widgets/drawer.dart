@@ -37,7 +37,7 @@ class HomeScreenDrawer extends StatelessWidget {
             leading: drawerListItemIcon(icon: Icons.info_outline_rounded),
             title: drawerListItemText(message: 'About'),
             onTap: () {
-              Navigator.pushNamed(context, "/about");
+              Navigator.pushNamed(context, "/aboutscreen");
             },
           ),
           const Spacer(),
@@ -55,7 +55,7 @@ class HomeScreenDrawer extends StatelessWidget {
     return Text(
       message,
       style: const TextStyle(
-        fontSize: 23,
+        fontSize: 21,
         fontWeight: FontWeight.w400,
         color: Colors.black,
       ),
