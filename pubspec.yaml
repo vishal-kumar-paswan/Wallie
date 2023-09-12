@@ -26,15 +26,24 @@ dependencies:
   flutter_file_downloader: ^1.1.2
   flutter_wallpaper_manager: ^0.0.4
   flutter_cache_manager: ^3.3.1
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.jpeg"
+  min_sdk_android: 2
 
 flutter:
   uses-material-design: true
   assets:
     - .env
+    - assets/images/app_icon.jpeg
     - assets/animations/loading_animation.json
     - assets/images/unsplash_logo.png
