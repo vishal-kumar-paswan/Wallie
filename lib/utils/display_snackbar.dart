@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DisplayScaffold {
-  DisplayScaffold({required this.context, required this.message}) {
+class DisplaySnackbar {
+  DisplaySnackbar(
+      {required this.context, required this.message, required this.color}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.green,
+        backgroundColor: color,
         content: SizedBox(
           height: 30,
           child: Center(
@@ -19,4 +20,5 @@ class DisplayScaffold {
   }
   final String message;
   final BuildContext context;
+  final Color color;
 }
