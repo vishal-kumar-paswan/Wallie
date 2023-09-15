@@ -79,12 +79,8 @@ class ImageScreen extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () async {
-              var file = await DefaultCacheManager().getSingleFile(imageUrl);
-              bool result = await WallpaperManager.setWallpaperFromFile(
-                file.path,
-                WallpaperManager.LOCK_SCREEN,
-              );
-
+              bool result =
+                  await _changeWallpaper(WallpaperManager.LOCK_SCREEN);
               DisplaySnackbar(
                 context: context,
                 message: result
@@ -100,11 +96,8 @@ class ImageScreen extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () async {
-              var file = await DefaultCacheManager().getSingleFile(imageUrl);
-              bool result = await WallpaperManager.setWallpaperFromFile(
-                file.path,
-                WallpaperManager.HOME_SCREEN,
-              );
+              bool result =
+                  await _changeWallpaper(WallpaperManager.HOME_SCREEN);
               DisplaySnackbar(
                 context: context,
                 message: result
@@ -120,6 +113,15 @@ class ImageScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<bool> _changeWallpaper(int screenIndex) async {
+    var file = await DefaultCacheManager().getSingleFile(imageUrl);
+    bool result = await WallpaperManager.setWallpaperFromFile(
+      file.path,
+      screenIndex,
+    );
+    return result;
   }
 
   void _closeFABMenu() {
