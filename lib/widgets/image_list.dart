@@ -19,7 +19,10 @@ class ImageListView extends StatelessWidget {
       drawer: const HomeScreenDrawer(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
-        toolbarHeight: 80,
+        toolbarHeight:
+            MediaQuery.of(context).orientation == Orientation.portrait
+                ? 80
+                : 60,
         title: Text(
           'Wallie.',
           style: GoogleFonts.pacifico(
@@ -48,9 +51,11 @@ class ImageListView extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: MasonryGridView.builder(
-                gridDelegate:
-                    const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? 2
+                          : 4,
                 ),
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
