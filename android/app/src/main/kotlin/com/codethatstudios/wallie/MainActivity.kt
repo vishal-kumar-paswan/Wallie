@@ -1,4 +1,4 @@
-package com.android.wallie
+package com.codethatstudios.wallie
 
 import io.flutter.embedding.android.FlutterActivity
 
