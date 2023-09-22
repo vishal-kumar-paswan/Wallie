@@ -5,7 +5,7 @@ class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   final String description = 'Wrap your screen in elegance.';
-  final String version = 'Version 0.0.1 α';
+  final String version = 'Version 1.0.0';
 
   @override
   Widget build(BuildContext context) {
