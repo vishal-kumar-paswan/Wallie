@@ -1,4 +1,4 @@
-<img src="https://imgur.com/JystQht.png" height="250">
+<img src="https://imgur.com/JystQht.png">
 
 # Wallie - Your Minimalist Wallpaper Companion
 
