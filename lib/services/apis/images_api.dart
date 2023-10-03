@@ -8,7 +8,7 @@ class ImagesAPI {
   ImagesAPI() {
     _dio.options.baseUrl = "https://api.unsplash.com";
     _dio.options.headers = {
-      "Authorization": "Client-ID ${dotenv.env['CLIENT-ID']}"
+      "Authorization": "Client-ID ${dotenv.env['CLIENTID']}"
     };
     // For development / debugging
     // _dio.interceptors.add(PrettyDioLogger());
