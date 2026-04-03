@@ -9,8 +9,8 @@ class InternetCubit extends Cubit<InternetState> {
   InternetCubit() : super(InternetState.initial) {
     _connectionSubscription = _connectivity.onConnectivityChanged.listen(
       (event) {
-        if (event == ConnectivityResult.wifi ||
-            event == ConnectivityResult.mobile) {
+        if (event.contains(ConnectivityResult.wifi) ||
+            event.contains(ConnectivityResult.mobile)) {
           emit(InternetState.gained);
         } else {
           emit(InternetState.lost);

@@ -14,8 +14,10 @@ class ImagesCubit extends Cubit<ImagesState> {
   void _fetchData() async {
     try {
       List<ImagesModel> images = await _postRepository.fetchImages();
+      if (isClosed) return;
       emit(ImagesLoadedState(images));
     } on DioException catch (e) {
+      if (isClosed) return;
       if (e.type == DioExceptionType.unknown) {
         emit(
           ImagesErrorState(
