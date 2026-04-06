@@ -101,7 +101,7 @@ class ImageListView extends StatelessWidget {
           );
         },
         child: Hero(
-          tag: 'image$index',
+          tag: imageUrls['regular'].toString(),
           child: CachedNetworkImage(
             imageUrl: imageUrls['small'].toString(),
             placeholder: (context, url) {

@@ -25,7 +25,7 @@ class ImageScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Hero(
-          tag: 'image$index',
+          tag: imageUrl,
           child: CachedNetworkImage(
             height: double.infinity,
             width: double.infinity,
@@ -52,6 +52,7 @@ class ImageScreen extends StatelessWidget {
         childrenOffset: Offset.fromDirection(30),
         children: [
           FloatingActionButton(
+            heroTag: null,
             onPressed: () async {
               FileDownloader.downloadFile(
                 name: 'wallie_wallpaper.jpg',
@@ -78,6 +79,7 @@ class ImageScreen extends StatelessWidget {
             child: const Icon(CupertinoIcons.cloud_download),
           ),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () async {
               bool result =
                   await _changeWallpaper(WallpaperManager.LOCK_SCREEN);
@@ -95,6 +97,7 @@ class ImageScreen extends StatelessWidget {
             child: const Icon(CupertinoIcons.lock_fill),
           ),
           FloatingActionButton(
+            heroTag: null,
             onPressed: () async {
               bool result =
                   await _changeWallpaper(WallpaperManager.HOME_SCREEN);
